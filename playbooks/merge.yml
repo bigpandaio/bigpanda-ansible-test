@@ -1,0 +1,19 @@
+---
+# DESTRUCTIVE: merges source_incidents into the target incident_id.
+# source_incidents must be a JSON array of incident IDs.
+- name: BigPanda — merge incidents
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Merge incidents
+      bigpanda.incident.merge:
+        environment_id:   "{{ environment_id }}"
+        incident_id:      "{{ incident_id }}"
+        source_incidents: "{{ source_incidents }}"
+        comment:          "{{ comment | default('Merged via AAP smoke test') }}"
+        api_token:        "{{ api_token }}"
+      register: result
+
+    - ansible.builtin.debug:
+        var: result

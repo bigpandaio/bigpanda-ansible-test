@@ -1,0 +1,19 @@
+---
+# DESTRUCTIVE: splits the listed alerts off the parent incident.
+# alert_ids must be a JSON array of alert IDs that belong to incident_id.
+- name: BigPanda — split alerts off an incident
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Split incident
+      bigpanda.incident.split:
+        environment_id: "{{ environment_id }}"
+        incident_id:    "{{ incident_id }}"
+        alert_ids:      "{{ alert_ids }}"
+        comment:        "{{ comment | default('Split via AAP smoke test') }}"
+        api_token:      "{{ api_token }}"
+      register: result
+
+    - ansible.builtin.debug:
+        var: result

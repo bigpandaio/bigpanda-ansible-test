@@ -1,0 +1,18 @@
+---
+# DESTRUCTIVE: closes the incident.
+# Run only against a disposable test incident.
+- name: BigPanda — resolve an incident
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Resolve incident
+      bigpanda.incident.resolve:
+        environment_id:     "{{ environment_id }}"
+        incident_id:        "{{ incident_id }}"
+        resolution_comment: "{{ resolution_comment | default('Resolved via AAP smoke test') }}"
+        api_token:          "{{ api_token }}"
+      register: result
+
+    - ansible.builtin.debug:
+        var: result

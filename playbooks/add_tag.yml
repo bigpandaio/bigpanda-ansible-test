@@ -1,0 +1,17 @@
+---
+- name: BigPanda — add/update an incident tag
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Add/update tag on incident
+      bigpanda.incident.add_tag:
+        environment_id: "{{ environment_id }}"
+        incident_id:    "{{ incident_id }}"
+        tag_id:         "{{ tag_id }}"
+        tag_value:      "{{ tag_value }}"
+        api_token:      "{{ api_token }}"
+      register: result
+
+    - ansible.builtin.debug:
+        var: result

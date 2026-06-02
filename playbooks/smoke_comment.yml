@@ -1,0 +1,17 @@
+---
+- name: BigPanda Ansible Collection — smoke test (comment)
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Add a comment to a BigPanda incident
+      bigpanda.incident.comment:
+        environment_id: "{{ environment_id }}"
+        incident_id:    "{{ incident_id }}"
+        comment:        "{{ msg | default('Hello from AAP') }}"
+        api_token:      "{{ api_token }}"
+      register: result
+
+    - name: Show API response
+      ansible.builtin.debug:
+        var: result

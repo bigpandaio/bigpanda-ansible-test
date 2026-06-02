@@ -1,0 +1,17 @@
+---
+# DESTRUCTIVE: resolves the listed alerts.
+# alert_ids must be a JSON array, e.g.  ["alert-uuid-1","alert-uuid-2"]
+- name: BigPanda — resolve one or more alerts
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Resolve alerts
+      bigpanda.incident.resolve_alert:
+        environment_id: "{{ environment_id }}"
+        alert_ids:      "{{ alert_ids }}"
+        api_token:      "{{ api_token }}"
+      register: result
+
+    - ansible.builtin.debug:
+        var: result

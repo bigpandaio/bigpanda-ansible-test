@@ -1,0 +1,16 @@
+---
+- name: BigPanda — assign a user to an incident
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Assign user
+      bigpanda.incident.assign:
+        environment_id: "{{ environment_id }}"
+        incident_id:    "{{ incident_id }}"
+        assignee_id:    "{{ assignee_id }}"
+        api_token:      "{{ api_token }}"
+      register: result
+
+    - ansible.builtin.debug:
+        var: result
