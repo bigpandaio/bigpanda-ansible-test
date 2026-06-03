@@ -13,6 +13,7 @@
         source_incidents: "{{ source_incidents }}"
         comment:          "{{ comment | default('Merged via AAP smoke test') }}"
         api_token:        "{{ api_token }}"
+        api_url:          "{{ api_url | default(omit) }}"
       register: result
 
     - ansible.builtin.debug:

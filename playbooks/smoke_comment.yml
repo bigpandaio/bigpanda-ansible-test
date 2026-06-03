@@ -10,6 +10,7 @@
         incident_id:    "{{ incident_id }}"
         comment:        "{{ msg | default('Hello from AAP') }}"
         api_token:      "{{ api_token }}"
+        api_url:        "{{ api_url | default(omit) }}"
       register: result
 
     - name: Show API response

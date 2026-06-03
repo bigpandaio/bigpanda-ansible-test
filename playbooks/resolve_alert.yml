@@ -11,6 +11,7 @@
         environment_id: "{{ environment_id }}"
         alert_ids:      "{{ alert_ids }}"
         api_token:      "{{ api_token }}"
+        api_url:        "{{ api_url | default(omit) }}"
       register: result
 
     - ansible.builtin.debug:

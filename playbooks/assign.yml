@@ -10,6 +10,7 @@
         incident_id:    "{{ incident_id }}"
         assignee_id:    "{{ assignee_id }}"
         api_token:      "{{ api_token }}"
+        api_url:        "{{ api_url | default(omit) }}"
       register: result
 
     - ansible.builtin.debug:

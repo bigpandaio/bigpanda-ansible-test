@@ -12,6 +12,7 @@
         incident_id:        "{{ incident_id }}"
         resolution_comment: "{{ resolution_comment | default('Resolved via AAP smoke test') }}"
         api_token:          "{{ api_token }}"
+        api_url:            "{{ api_url | default(omit) }}"
       register: result
 
     - ansible.builtin.debug:

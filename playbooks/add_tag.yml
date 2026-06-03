@@ -11,6 +11,7 @@
         tag_id:         "{{ tag_id }}"
         tag_value:      "{{ tag_value }}"
         api_token:      "{{ api_token }}"
+        api_url:        "{{ api_url | default(omit) }}"
       register: result
 
     - ansible.builtin.debug:
