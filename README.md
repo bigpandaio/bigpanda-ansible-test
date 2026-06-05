@@ -51,7 +51,7 @@ every parameter sourced from `extra_vars` (which AAP populates from a Survey).
 4. **(EU / dedicated tenants only)** The BigPanda API host that serves
    your tenant. Defaults to `https://api.bigpanda.io` (US prod) and only
    needs to be set otherwise:
-   - EU (`prod-eu-central-1`): `https://api.eu.bigpanda.io`
+   - EU (`prod-eu-central-1`): `https://eu-api.bigpanda.io`
    - Dedicated: provided by your BigPanda CSM
    Each Job Template below exposes an optional `api_url` Survey question
    so you can pick the host per launch. You can also set it once via
@@ -114,7 +114,7 @@ every parameter sourced from `extra_vars` (which AAP populates from a Survey).
 | 2 | BigPanda Incident ID | `incident_id` | Text | yes | — | UUID from the incident URL |
 | 3 | BigPanda API Token | `api_token` | **Password** | yes | — | User API Key |
 | 4 | Comment text | `msg` | Text | no | `Hello from AAP via Job Template` | Appears on the incident timeline |
-| 5 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://api.eu.bigpanda.io`) or dedicated tenants |
+| 5 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://eu-api.bigpanda.io`) or dedicated tenants |
 
 #### 2. `BigPanda - Add Tag` — playbook `playbooks/add_tag.yml`
 
@@ -125,7 +125,7 @@ every parameter sourced from `extra_vars` (which AAP populates from a Survey).
 | 3 | BigPanda API Token | `api_token` | **Password** | yes | — | User API Key |
 | 4 | Tag name (tag_id) | `tag_id` | Text | yes | — | Must already exist in your env, e.g. `priority`, `owner`, `service` |
 | 5 | New tag value | `tag_value` | Text | yes | — | e.g. `P3`, `platform-team` |
-| 6 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://api.eu.bigpanda.io`) or dedicated tenants |
+| 6 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://eu-api.bigpanda.io`) or dedicated tenants |
 
 #### 3. `BigPanda - Assign User` — playbook `playbooks/assign.yml`
 
@@ -135,7 +135,7 @@ every parameter sourced from `extra_vars` (which AAP populates from a Survey).
 | 2 | BigPanda Incident ID | `incident_id` | Text | yes | — | UUID |
 | 3 | BigPanda API Token | `api_token` | **Password** | yes | — | User API Key |
 | 4 | Assignee user ID | `assignee_id` | Text | yes | — | BigPanda user UUID (SCIM `/Users` API, or BigPanda User Management) |
-| 5 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://api.eu.bigpanda.io`) or dedicated tenants |
+| 5 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://eu-api.bigpanda.io`) or dedicated tenants |
 
 #### 4. `BigPanda - Resolve Alert` ⚠️ — playbook `playbooks/resolve_alert.yml`
 
@@ -144,7 +144,7 @@ every parameter sourced from `extra_vars` (which AAP populates from a Survey).
 | 1 | BigPanda Environment ID | `environment_id` | Text | yes | — | UUID |
 | 2 | BigPanda API Token | `api_token` | **Password** | yes | — | User API Key |
 | 3 | Alert IDs (JSON array) | `alert_ids` | **Textarea** | yes | `["alert-uuid-1"]` | JSON list. Example: `["5d09d221aebaec1c43ccd448"]`. Max 500 per call |
-| 4 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://api.eu.bigpanda.io`) or dedicated tenants |
+| 4 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://eu-api.bigpanda.io`) or dedicated tenants |
 
 #### 5. `BigPanda - Split Incident` ⚠️ — playbook `playbooks/split.yml`
 
@@ -155,7 +155,7 @@ every parameter sourced from `extra_vars` (which AAP populates from a Survey).
 | 3 | BigPanda API Token | `api_token` | **Password** | yes | — | User API Key |
 | 4 | Alert IDs to split off (JSON array) | `alert_ids` | **Textarea** | yes | `[]` | Alerts to move to a new incident |
 | 5 | Reason / comment | `comment` | Text | no | `Split via AAP smoke test` | Timeline note |
-| 6 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://api.eu.bigpanda.io`) or dedicated tenants |
+| 6 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://eu-api.bigpanda.io`) or dedicated tenants |
 
 #### 6. `BigPanda - Merge Incidents` ⚠️ — playbook `playbooks/merge.yml`
 
@@ -166,7 +166,7 @@ every parameter sourced from `extra_vars` (which AAP populates from a Survey).
 | 3 | BigPanda API Token | `api_token` | **Password** | yes | — | User API Key |
 | 4 | Source incident IDs (JSON array) | `source_incidents` | **Textarea** | yes | `[]` | Incidents to merge INTO the target |
 | 5 | Reason / comment | `comment` | Text | no | `Merged via AAP smoke test` | Timeline note |
-| 6 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://api.eu.bigpanda.io`) or dedicated tenants |
+| 6 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://eu-api.bigpanda.io`) or dedicated tenants |
 
 #### 7. `BigPanda - Resolve Incident` 🛑 — playbook `playbooks/resolve.yml`
 
@@ -176,7 +176,7 @@ every parameter sourced from `extra_vars` (which AAP populates from a Survey).
 | 2 | BigPanda Incident ID | `incident_id` | Text | yes | — | **Will be closed** |
 | 3 | BigPanda API Token | `api_token` | **Password** | yes | — | User API Key |
 | 4 | Resolution comment | `resolution_comment` | Text | no | `Resolved via AAP smoke test` | Posted before close |
-| 5 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://api.eu.bigpanda.io`) or dedicated tenants |
+| 5 | BigPanda API URL | `api_url` | Text | no | *(leave blank → module default `https://api.bigpanda.io`)* | Override for EU (`https://eu-api.bigpanda.io`) or dedicated tenants |
 
 ### AAP Survey-field mapping
 
@@ -223,7 +223,7 @@ ansible-playbook -i 'localhost,' -c local --check \
 | Project sync fails with `bigpanda.incident not found` | The EE that ran ansible-galaxy doesn't know about your local Hub. | Generate a Hub API token, create a `Ansible Galaxy/Automation Hub API Token` credential pointing at `https://<aap>/api/galaxy/`, and attach it under *Access Management → Organizations → Default → Galaxy credentials*. |
 | Job fails with HTTP 401 | Bad or expired BigPanda API key. | Mint a fresh one in BigPanda → Settings → API Keys, update the Survey answer. |
 | Job fails with HTTP 404 + `Tag ID … does not exist` | The `tag_id` you supplied isn't a tag in your BigPanda environment. | Open an incident in BigPanda and use one of the tag names you see in the right-hand panel. |
-| Job fails with HTTP 404 / DNS / TLS error on `api.bigpanda.io` | Your tenant is on EU or a dedicated host. | Set the `api_url` Survey field (e.g. `https://api.eu.bigpanda.io`), or set `BIGPANDA_API_URL` on the execution environment. |
+| Job fails with HTTP 404 / DNS / TLS error on `api.bigpanda.io` | Your tenant is on EU or a dedicated host. | Set the `api_url` Survey field (e.g. `https://eu-api.bigpanda.io`), or set `BIGPANDA_API_URL` on the execution environment. |
 | `bigpanda-ansible-test` repo changes not picked up | Project not re-synced. | In the Project row, click the ↻ sync icon, or enable **Update revision on launch** on the Project. |
 
 ---
